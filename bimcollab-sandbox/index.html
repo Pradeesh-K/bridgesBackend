@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BCF-API Sample</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <h1>BCF-API Sample</h1>
+
+    <button
+      class="btn btn-primary"
+      onclick="location.href='/auth'"
+      type="button"
+    >
+      1. Authenticate in BIMcollab and retrieve an AccessToken
+    </button>
+    <h4>Access Token</h4>
+    <p id="tokenContainer">No access token requested yet!</p>
+    <p id="hint" style="display: none">
+      You can now proceed to query the BCF-API endpoints!
+    </p>
+
+    <button
+      id="projectsButton"
+      class="btn btn-primary"
+      onclick="getAllProjects()"
+    >
+      2. Retrieve all projects
+    </button>
+    <p id="projects"></p>
+
+    <pre id="projects"></pre>
+    <button id="topicsButton" class="btn btn-primary" onclick="getAllTopics()">
+      3. Retrieve all topics for a specific project
+    </button>
+    <p id="topics"></p>
+
+    <pre id="topics"></pre>
+    <button id="commentsButton" class="btn btn-primary">
+      4. Retrieve all comments for a specific topic
+    </button>
+
+    <pre id="comments"></pre>
+    <div id="informationContainer"></div>
+    <script src="./functions.js"></script>
+  </body>
+
+  <script>
+    const baseurl = "playground.bimcollab.com/bcf";
+    let projectID = "";
+
+    function getToken() {
+      const xhttp = new XMLHttpRequest();
+      //call the server-side javascript code -> use the right endpoint!
+      xhttp.open("get", "token", true);
+      //register the callback function
+      xhttp.onreadystatechange = processResponse;
+      xhttp.send();
+    }
+
+    function processResponse(e) {
+      if (e.target.readyState == 4 && e.target.status == 200) {
+        let token = e.target.responseText;
+        console.log("[INFO]: access_token: ");
+        console.log(token);
+
+        // Save the token in the browsers session storage
+        // Note: We do this only for demonstration purposes.
+        // These kinds of Oauth2 Access tokens should not be accessible on the client side for security reasons.
+        window.sessionStorage.setItem("bimcollab_token", token);
+        document.getElementById("tokenContainer").innerHTML = token;
+        document.getElementById("hint").style.display = "block";
+      }
+    }
+    getToken();
+
+    function getAllProjects() {
+      console.log("[INFO]: getAllProject() called. ");
+      const xhttp = new XMLHttpRequest();
+      //call the server-side javascript code -> use the right endpoint!
+      xhttp.open("get", "allProjects", true);
+      //register the callback function
+      xhttp.onreadystatechange = processResponseAllProjects;
+      xhttp.send();
+    }
+
+    function processResponseAllProjects(e) {
+      if (e.target.readyState == 4 && e.target.status == 200) {
+        let response = e.target.responseText;
+        console.log("[INFO]: Projects ");
+        console.log(response);
+        json = JSON.parse(response);
+        projectID = json[0].project_id;
+        console.log("Project ID = " + projectID);
+        document.getElementById("projects").innerHTML = response;
+      }
+    }
+
+    function getAllTopics() {
+      console.log("[INFO]: getAllTopics() called. ");
+      const xhttp = new XMLHttpRequest();
+      //call the server-side javascript code -> use the right endpoint!
+      xhttp.open("get", "allTopics/" + projectID, true);
+      //register the callback function
+      xhttp.onreadystatechange = processResponseAllTopics;
+      xhttp.send();
+    }
+
+    function processResponseAllTopics(e) {
+      if (e.target.readyState == 4 && e.target.status == 200) {
+        let response = e.target.responseText;
+        console.log("[INFO]: Topics ");
+        console.log(response);
+        json = JSON.parse(response);
+        console.log(JSON);
+
+        document.getElementById("topics").innerHTML = response;
+      }
+    }
+  </script>
+</html>

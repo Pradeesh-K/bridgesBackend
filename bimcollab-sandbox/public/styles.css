@@ -1,0 +1,20 @@
+body {
+    padding: 15px;
+}
+#tokenContainer {
+    background-color: rgb(203, 203, 203);
+    border-radius: 5px;
+    padding: 5px;
+    word-break: break-all;
+    white-space: normal;
+}
+
+pre {
+    background-color: rgb(203, 203, 203);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,147 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BCF API Experimentation</title>
+  </head>
+  <body>
+    <h1>BCF-API Sample</h1>
+
+    <button class="btn btn-primary" onclick="location.href='/auth'" type="button">
+      Authenticate in BIMcollab and retrieve an AccessToken
+    </button>
+    <h4>Access Token</h4>
+    <p id="tokenContainer">No access token requested yet!</p>
+    <p id="hint" style="display: none">You can now proceed to query the BCF-API endpoints!</p>
+
+    <button id="projectsButton" class="btn btn-primary" onclick="executeAPIcalls()">Execute API calls</button>
+    <p id="output"></p>
+  </body>
+
+  <script>
+    function getToken() {
+      const xhttp = new XMLHttpRequest();
+      //call the server-side javascript code -> use the right endpoint!
+      xhttp.open("get", "token", true);
+      //register the callback function
+      xhttp.onreadystatechange = processResponse;
+      xhttp.send();
+    }
+
+    function processResponse(e) {
+      if (e.target.readyState == 4 && e.target.status == 200) {
+        let token = e.target.responseText;
+        console.log("[INFO]: access_token: ");
+        console.log(token);
+
+        // Save the token in the browsers session storage
+        // Note: We do this only for demonstration purposes.
+        // These kinds of Oauth2 Access tokens should not be accessible on the client side for security reasons.
+        window.sessionStorage.setItem("bimcollab_token", token);
+        document.getElementById("tokenContainer").innerHTML = token;
+        document.getElementById("hint").style.display = "block";
+      }
+    }
+    getToken();
+
+    async function executeAPIcalls() {
+      //Query Supported Version
+      let resp_json = await fetchData("bcf/versions");
+      console.log(resp_json);
+
+      let version = 2.1;
+
+      //Query all projects
+      let json = await fetchData(`/bcf/${version}/projects`);
+      //let json = await response.json();
+      let project_id = json[0].project_id;
+      console.log("Project ID = " + project_id);
+
+      //Query all topics
+      //add your code here
+	  
+
+      // get first topic 
+      // output title, creationAuthor, topicId;
+      
+
+      // get all comments of first topic
+      // add your code here
+
+      // post a new topic
+      newTopic = {
+        topic_type: "Issue",
+        topic_status: "Active",
+        title: "Wall clashes Windows",
+        labels: ["Architecture"],
+      };
+	  // add your code here
+     
+    }
+
+    async function fetchData(apiUrl) {
+      try {
+        const baseurl = "https://playground.bimcollab.com/";
+
+        console.log("Fetching data from " + baseurl + apiUrl);
+
+        token = window.sessionStorage.getItem("bimcollab_token");
+
+        // Configure the Fetch request with the OAuth2 token
+        const response = await fetch(baseurl + apiUrl, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        // Check if the request was successful
+        if (!response.ok) {
+          throw new Error(`Error in request: ${response.status} ${response.statusText}`);
+        }
+
+        // Extract and return the received JSON object
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        // Handle errors during the Fetch operation
+        console.error("Error fetching data:", error);
+        throw error; // Optional: Continue throwing the error to handle it in the caller
+      }
+    }
+
+    async function postData(apiUrl, dataToSend) {
+      try {
+        const baseurl = "https://playground.bimcollab.com/";
+
+        console.log("Posting data to " + baseurl + apiUrl);
+
+        token = window.sessionStorage.getItem("bimcollab_token");
+
+        // Fetch options for the POST request
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(dataToSend),
+        };
+
+        const response = await fetch(baseurl + apiUrl, requestOptions);
+
+        // Check if the request was successful (status code 2xx)
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        // Parse the response data (if any)
+        const responseData = await response.json();
+        console.log("Response Data:", responseData);
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    }
+  </script>
+</html>

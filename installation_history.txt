@@ -1,0 +1,273 @@
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~ (BARE:master)
+$ cd bridges
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (BARE:master)
+$ npm create vite
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm WARN exec The following package was not found and will be installed: create-vite
+? Project name: » vite-projectfrontend
+v Project name: ... frontend
+? Select a framework: » - Use arrow-keys. Return to submit.
+>   Vanilla
+    Vue
+    React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Others
+
+
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla
+>   Vue
+    React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Others
+? Select a framework: » - Use arrow-keys. Return to submit.
+    Vanilla
+    Vue
+>   React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Others
+v Select a framework: » React
+? Select a variant: » - Use arrow-keys. Return to submit.
+>   TypeScript
+    TypeScript + SWC
+    JavaScript
+    JavaScript + SWC
+
+? Select a variant: » - Use arrow-keys. Return to submit.
+    TypeScript
+>   TypeScript + SWC
+    JavaScript
+    JavaScript + SWC
+? Select a variant: » - Use arrow-keys. Return to submit.
+    TypeScript
+    TypeScript + SWC
+>   JavaScript
+    JavaScript + SWC
+v Select a variant: » JavaScript
+
+Scaffolding project in C:\Users\Pradeesh Karunakaran\bridges\frontend...
+
+Done. Now run:
+
+  cd frontend
+  npm install
+  npm run dev
+
+cd frontend
+
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (BARE:master)
+$ cd frontend
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (BARE:master)
+$ npm install
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 268 packages, and audited 269 packages in 2m
+
+97 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (BARE:master)
+$ npm run dev
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+> frontend@0.0.0 dev
+> vite
+
+
+  VITE v4.5.0  ready in 502 ms
+
+  ?  Local:   http://127.0.0.1:5173/
+  ?  Network: use --host to expose
+
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (BARE:master)
+$ cd ..
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (BARE:master)
+$ mkdir backend
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (BARE:master)
+$ cd backend
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (BARE:master)
+$ npm init -y
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+Wrote to C:\Users\Pradeesh Karunakaran\bridges\backend\package.json:
+
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (BARE:master)
+$ npm i express mongoose nodemon
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'mongoose@8.0.1',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'bson@6.2.0',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'mongodb@6.2.0',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+
+added 117 packages, and audited 118 packages in 48s
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (BARE:master)
+$ touch app.js
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (BARE:master)
+$ cd ..
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (BARE:master)
+$ git init
+Initialized empty Git repository in C:/Users/Pradeesh Karunakaran/bridges/.git/
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (master)
+$ git checkout -b main
+Switched to a new branch 'main'
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (main)
+$ git add .
+
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (main)
+$ git remote remove origin
+error: No such remote: 'origin'
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (main)
+$ git remote add origin "https://github.com/Pradeesh-K/bridges.git"
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (main)
+$ git push -u --force origin main
+Enumerating objects: 2023, done.
+Counting objects: 100% (2023/2023), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (1951/1951), done.
+Writing objects: 100% (2023/2023), 3.45 MiB | 3.24 MiB/s, done.
+Total 2023 (delta 199), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (199/199), done.
+To https://github.com/Pradeesh-K/bridges.git
+ + 731f148...9991eb6 main -> main (forced update)
+branch 'main' set up to track 'origin/main'.
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges (main)
+$ cd frontend
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (main)
+$ npm i react-bootstrap react-router-dom notistack axios
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 36 packages, and audited 305 packages in 26s
+
+100 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (main)
+$ npm install @mui/material @emotion/react @emotion/styled
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 47 packages, and audited 352 packages in 40s
+
+109 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (main)
+$ npm install @fontsource/roboto
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 1 package, and audited 353 packages in 6s
+
+109 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (main)
+$ npm install @mui/icons-material
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 1 package, and audited 354 packages in 3m
+
+110 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/frontend (main)
+$ cd ../backend
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (main)
+$ npm i cors notistack
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'bson@6.2.0',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'mongodb@6.2.0',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+npm WARN EBADENGINE Unsupported engine {
+npm WARN EBADENGINE   package: 'mongoose@8.0.1',
+npm WARN EBADENGINE   required: { node: '>=16.20.1' },
+npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+npm WARN EBADENGINE }
+
+added 11 packages, and audited 129 packages in 4s
+
+16 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (main)
+$ history > installation_history.txt
+
+Pradeesh Karunakaran@DESKTOP-485DOJ1 MINGW64 ~/bridges/backend (main)
+$

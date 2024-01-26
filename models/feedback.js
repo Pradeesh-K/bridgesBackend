@@ -14,7 +14,9 @@ const feedbackSchema = new Schema({
     cameraPosition:{
         type: Array
     }, 
-    
+    targetPosition:{
+        type: Array
+    }, 
     author:{
         type:Schema.Types.ObjectId,
         ref:'User'

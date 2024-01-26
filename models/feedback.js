@@ -11,12 +11,13 @@ const feedbackSchema = new Schema({
     GUID:{
         type:String,
     },
-    cameraPosition:{
-        type: Array
-    }, 
     targetPosition:{
         type: Array
     }, 
+    cameraPosition:{
+        type: Array
+    }, 
+
     author:{
         type:Schema.Types.ObjectId,
         ref:'User'

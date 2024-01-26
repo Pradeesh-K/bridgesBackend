@@ -6,7 +6,7 @@ module.exports.createFeedback = async (req, res) => {
     try {
         
         const { id } = req.params;
-    const { name, comments, GUID, cameraPosition, lastSelection } = req.body;
+    const { name, comments, GUID, cameraPosition, targetPosition, lastSelection } = req.body;
     // console.log(id);
     // console.log(req.body);
 
@@ -28,6 +28,7 @@ module.exports.createFeedback = async (req, res) => {
         comments,
         GUID,
         cameraPosition,
+        targetPosition,
         lastSelection,
       });
     

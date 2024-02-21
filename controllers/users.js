@@ -82,6 +82,6 @@ module.exports.logout = (req, res) => {
       return next(err);
     }
 
-    res.redirect(process.env.FRONTEND_URL);
+    res.redirect(`${process.env.FRONTEND_URL}/about`);
   });
 };

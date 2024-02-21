@@ -24,6 +24,13 @@ const feedbackSchema = new Schema({
     },
     lastSelection: {
         type: Object
+    }, 
+    element: {
+        type: String,
+    },
+    dateCreated: {
+        type: Date,
+        default: Date.now,
     }
 })
 

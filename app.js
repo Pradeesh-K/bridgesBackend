@@ -81,6 +81,8 @@ const sessionConfig = {
     maxAge: 1000 * 60 * 60 * 24 * 7,
     // secure: true
   },
+  phoneNumber: null, // Initialize to null or any default value
+  otp: null, // Initialize to null or any default value
 };
 app.use(session(sessionConfig));
 app.use(passport.initialize());

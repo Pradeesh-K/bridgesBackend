@@ -6,19 +6,35 @@ const passport = require("passport");
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const secretKey = process.env.SECRET || 'thisshouldbeabettersecret!';
+const Citizen = require("../models/citizen")
 
-const opts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: secretKey, // Replace with your actual secret key
-};
+const jwt = require('jsonwebtoken');
 
-passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-  // Here you can query your database to find the user based on the decoded JWT payload
 
-}));
+const authenticateJWT = (req, res, next) => {
+    const token = req.headers['authorization'];
+  
+    if (!token) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+  
+    try {
+      const decoded = jwt.verify(token, secretKey);
+  
+      
+      if (decoded.phoneNumber === req.session.phoneNumber) {
+        
+        req.phoneNumber = decoded.phoneNumber;
+        next();
+      } else {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
+    } catch (err) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+  };
+  
 
-// Middleware to protect the route with passport
-const requireAuth = passport.authenticate('jwt', { session: false });
 
 
 
@@ -30,7 +46,7 @@ router
 router
 .route("/:id")
 .get(bridges.showBridge)
-.put(requireAuth, bridges.editBridge);
+.put(authenticateJWT,  bridges.editBridge);
 
 module.exports = router;        // missed this so got the TypeError: Router.use() requires a middleware function but got a Object
 
